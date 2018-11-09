@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConejitoWebService", "ConejitoWebService\ConejitoWebService.csproj", "{5E2A4CB4-6F47-4EF5-A1B4-386EACB415FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E2A4CB4-6F47-4EF5-A1B4-386EACB415FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2A4CB4-6F47-4EF5-A1B4-386EACB415FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2A4CB4-6F47-4EF5-A1B4-386EACB415FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2A4CB4-6F47-4EF5-A1B4-386EACB415FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB1EA596-700B-4B19-9752-97DD72EB2FD2}
+	EndGlobalSection
+EndGlobal
