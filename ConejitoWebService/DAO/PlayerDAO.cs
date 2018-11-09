@@ -11,11 +11,11 @@ namespace ConejitoWebService.DAO
 {
     public class PlayerDAO : IPlayerDAO
     {
+        #region Funciones para manejar el jugador
         public List<Player> GetMyFriendsDb(List<Player> players)
         {
             throw new NotImplementedException();
         }
-
         public int GetMyScore(string facebookId)
         {
             int score = default(int);
@@ -25,7 +25,6 @@ namespace ConejitoWebService.DAO
             }
             return score;
         }
-
         public bool InsertPlayer(Player player)
         {
             bool success = default(bool);
@@ -36,10 +35,16 @@ namespace ConejitoWebService.DAO
             }
             return success;
         }
-
         public bool UpdatePlayerScore(Player player, int score)
         {
-            throw new NotImplementedException();
+            bool success = default(bool);
+            using (IDbConnection connection = GetConnection("KBunnySql"))
+            {
+                var result = connection.Execute("KBunnyGame_Players_UpdateScore @Id, @Score", new { player.Id, score});
+                success = (result >= 1);
+            }
+            return success;
         }
+        #endregion
     }
 }

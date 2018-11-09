@@ -15,12 +15,12 @@ namespace ConejitoWebService.Services
             playerDao = new PlayerDAO();
         }
 
+        #region Funciones del servicio para modificar el jugador
         public int GetMyScore(string facebookId)
         {
             int score = playerDao.GetMyScore(facebookId);
             return score;
         }
-
         public bool InsertPlayer(Player player)
         {
             if (string.IsNullOrEmpty(player.FacebookId) || string.IsNullOrEmpty(player.Name))
@@ -32,5 +32,14 @@ namespace ConejitoWebService.Services
                 return playerDao.InsertPlayer(player);
             }
         }
+        public bool UpdatePlayerScore(Player player, int score)
+        {
+            if(player.Score > score)
+            {
+                return false;
+            }
+            return playerDao.UpdatePlayerScore(player, score);
+        }
+        #endregion
     }
 }

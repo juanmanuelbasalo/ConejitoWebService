@@ -33,8 +33,9 @@ namespace ConejitoWebService.Controllers
         }
 
         // PUT: api/Players/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int score, [FromBody]Player player)
         {
+            playerService.UpdatePlayerScore(player, score);
         }
 
         // DELETE: api/Players/5
