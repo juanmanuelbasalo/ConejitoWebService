@@ -26,13 +26,20 @@ namespace ConejitoWebService.Controllers
             return playerService.GetMyScore(facebookId);
         }
 
+        [Route("api/Players/GetMyFriends")]
+        [HttpGet]
+        public IList<Player> GetMyFriends([FromBody]ICollection<Player> players)
+        {
+            return playerService.GetMyFriends(players);
+        }
+
         // POST: api/Players
         public void Post([FromBody]Player player)
         {
             playerService.InsertPlayer(player);
         }
 
-        // PUT: api/Players/5
+        // PUT: api/Players?score={score}
         public void Put(int score, [FromBody]Player player)
         {
             playerService.UpdatePlayerScore(player, score);

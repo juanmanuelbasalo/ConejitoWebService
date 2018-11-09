@@ -40,6 +40,10 @@ namespace ConejitoWebService.Services
             }
             return playerDao.UpdatePlayerScore(player, score);
         }
+        public IList<Player> GetMyFriends(ICollection<Player> players)
+        {
+            return playerDao.GetMyFriendsDb(players);
+        }
         #endregion
     }
 }

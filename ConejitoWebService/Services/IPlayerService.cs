@@ -12,5 +12,6 @@ namespace ConejitoWebService.Services
         int GetMyScore(string facebookId);
         bool InsertPlayer(Player player);
         bool UpdatePlayerScore(Player player, int score);
+        IList<Player> GetMyFriends(ICollection<Player> players);
     }
 }
