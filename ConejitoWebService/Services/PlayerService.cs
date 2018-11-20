@@ -10,9 +10,9 @@ namespace ConejitoWebService.Services
     public class PlayerService : IPlayerService
     {
         private readonly IPlayerDAO playerDao;
-        public PlayerService()
+        public PlayerService(IPlayerDAO playerDao)
         {
-            playerDao = new PlayerDAO();
+            this.playerDao = playerDao;
         }
 
         #region Funciones del servicio para modificar el jugador
@@ -40,9 +40,13 @@ namespace ConejitoWebService.Services
             }
             return playerDao.UpdatePlayerScore(player, score);
         }
-        public IList<Player> GetMyFriends(ICollection<Player> players)
+        public ListPlayer GetMyFriends(ListPlayer players)
         {
             return playerDao.GetMyFriendsDb(players);
+        }
+        public Player GetPlayer(string facebookId)
+        {
+            return playerDao.GetPlayer(facebookId);
         }
         #endregion
     }

@@ -6,17 +6,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ConejitoWebService.Services;
+using ConejitoWebService.DAO;
 
 namespace ConejitoWebService.Controllers
 {
     public class PlayersController : ApiController
     {
         private readonly IPlayerService playerService;
+        private readonly IPlayerDAO playerDao = new PlayerDAO();
 
         public PlayersController()
         {
-            playerService = new PlayerService(
-);
+            playerService = new PlayerService(playerDao);
         }
 
         [Route("api/Players/GetScore/{facebookId}")]
@@ -27,12 +28,17 @@ namespace ConejitoWebService.Controllers
         }
 
         [Route("api/Players/GetMyFriends")]
-        [HttpGet]
-        public IList<Player> GetMyFriends([FromBody]ICollection<Player> players)
+        [HttpPost]
+        public ListPlayer GetMyFriends([FromBody]ListPlayer players)
         {
             return playerService.GetMyFriends(players);
         }
 
+        [Route("api/Players/GetPlayer/{facebookId}")]
+        public Player GetPlayer(string facebookId)
+        {
+            return playerService.GetPlayer(facebookId);
+        }
         // POST: api/Players
         public void Post([FromBody]Player player)
         {

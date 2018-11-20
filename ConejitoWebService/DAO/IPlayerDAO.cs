@@ -10,8 +10,9 @@ namespace ConejitoWebService.DAO
     public interface IPlayerDAO
     {
         int GetMyScore(string facebookId);
-        IList<Player> GetMyFriendsDb(ICollection<Player> players);
         bool InsertPlayer(Player player);
         bool UpdatePlayerScore(Player player, int score);
+        ListPlayer GetMyFriendsDb(ListPlayer players);
+        Player GetPlayer(string facebookId);
     }
 }

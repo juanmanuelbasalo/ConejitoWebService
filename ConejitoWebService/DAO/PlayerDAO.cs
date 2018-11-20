@@ -12,16 +12,17 @@ namespace ConejitoWebService.DAO
     public class PlayerDAO : IPlayerDAO
     {
         #region Funciones para manejar el jugador
-        public IList<Player> GetMyFriendsDb(ICollection<Player> players)
+        public ListPlayer GetMyFriendsDb(ListPlayer players)
         {
-            IList<Player> dbPlayers = new List<Player>();
+            ListPlayer dbPlayers = new ListPlayer();
+            dbPlayers.Players = new List<Player>();
             using (IDbConnection connection = GetConnection("KBunnySql"))
             {
-                foreach(var player in players)
+                foreach(var player in players.Players)
                 {
                     var result = connection.Query<Player>("KBunnyGame_Players_GetMyFriends", new { player.FacebookId }, 
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
-                    dbPlayers.Add(result);
+                    dbPlayers.Players.Add(result);
                 }
             }
             return dbPlayers;
@@ -35,6 +36,15 @@ namespace ConejitoWebService.DAO
                     commandType: CommandType.StoredProcedure).FirstOrDefault();
             }
             return score;
+        }
+        public Player GetPlayer(string facebookId)
+        {
+            using (IDbConnection connection = GetConnection("KBunnySql"))
+            {
+                var player = connection.Query<Player>("KBunnyGame_Players_GetMyFriends", new { FacebookId = facebookId },
+                        commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return player;
+            }
         }
         public bool InsertPlayer(Player player)
         {
