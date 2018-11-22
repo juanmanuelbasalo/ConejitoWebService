@@ -14,5 +14,11 @@ namespace ConejitoWebService.DAO
         bool UpdatePlayerScore(Player player, int score);
         ListPlayer GetMyFriendsDb(ListPlayer players);
         Player GetPlayer(string facebookId);
+
+        Task<int> GetMyScoreAsync(string facebookId);
+        Task<ListPlayer> GetMyFriendsDbAsync(ListPlayer players);
+        Task<Player> GetPlayerAsync(string facebookId);
+        Task<bool> InsertPlayerAsync(Player player);
+        Task<bool> UpdatePlayerScoreAsync(Player player, int score);
     }
 }
